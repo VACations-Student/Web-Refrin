@@ -1,0 +1,147 @@
+/* ---------- HEADER ---------- */
+
+/* make header fixed (always follows viewport) */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1200;
+    background: linear-gradient(90deg, #f6f6f6 0%, #d7cfcd 50%, #bfb6b4 100%);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+/* prevent content jump: add top padding/margin equal to nav height */
+.main-content-offset {
+    height: var(--nav-height);
+    /* 78px in your root */
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 32px;
+    min-height: var(--nav-height);
+}
+
+/* ---------- LOGO ---------- */
+
+.brand {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    width: 200px;
+}
+
+.brand img {
+    width: 100%;
+    max-width: 180px;
+    height: auto;
+    display: block;
+}
+
+/* ---------- NAV LINKS (DESKTOP) ---------- */
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 36px;
+    margin-left: auto;
+}
+
+.nav-links a {
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: 14px;
+    color: #111;
+    padding: 6px 8px;
+    transition: transform .15s ease;
+}
+
+.nav-links a:hover {
+    transform: translateY(-2px);
+}
+
+/* ---------- HAMBURGER BUTTON ---------- */
+
+.hamburger {
+    display: none;
+    font-size: 28px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* ---------- MOBILE NAV ---------- */
+
+@media (max-width: 880px) {
+
+    .navbar {
+        padding: 14px 18px;
+    }
+
+    .hamburger {
+        display: block;
+        margin-left: auto;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 72px;
+        right: 18px;
+
+        width: 220px;
+
+        background: white;
+        border-radius: 6px;
+
+        flex-direction: column;
+        gap: 0;
+
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-10px);
+
+        transition: 0.25s ease;
+    }
+
+    .nav-links li {
+        width: 100%;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 16px;
+        text-align: center;
+        border-bottom: 1px solid #eee;
+    }
+
+    .nav-links li:last-child a {
+        border-bottom: none;
+    }
+
+    .nav-links.open {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+    }
+}
+
+/* ---------- SMALL PHONES ---------- */
+
+@media (max-width: 420px) {
+
+    .brand {
+        width: 140px;
+    }
+
+    .nav-links {
+        right: 10px;
+        width: 200px;
+    }
+}

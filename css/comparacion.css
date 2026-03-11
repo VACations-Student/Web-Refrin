@@ -1,0 +1,41 @@
+.comparison-section {
+    width: 100%;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.comparison-title {
+    font-size: 38px;
+    font-weight: 700;
+    margin-bottom: 40px;
+}
+
+.comparison-table {
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    border-collapse: collapse;
+    table-layout: fixed;
+    font-size: 18px;
+}
+
+.comparison-table th {
+    background: #efefef;
+    font-weight: 700;
+    padding: 20px;
+    border: 2px solid #cfcfcf;
+}
+
+.comparison-table td {
+    padding: 20px;
+    border: 1px solid #d8d8d8;
+    text-align: left;
+}
+
+.comparison-table tr:nth-child(even) {
+    background: #fafafa;
+}
+
+.comparison-table td:before {
+    content: "• ";
+}

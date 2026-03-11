@@ -1,0 +1,100 @@
+/* ---------- BENEFICIOS (sección de viñetas) ---------- */
+.benefits {
+    background: #fff;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    padding: clamp(28px, 4.5vw, 56px) 0 64px;
+}
+
+.benefits .container {
+    /* mantén alineación similar al hero-caption */
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 clamp(12px, 4vw, 80px);
+}
+
+.benefits-title {
+    font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    text-align: left;
+    font-size: clamp(22px, 2.6vw, 40px);
+    color: #0b0b0b;
+}
+
+/* Dos columnas: lista a la izquierda y a la derecha */
+.benefit-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(18px, 3vw, 56px);
+    align-items: start;
+}
+
+/* List styling: tipo "bullet grande" y texto en mayúsculas */
+.benefit-list {
+    list-style: none;
+    /* usamos pseudo-bullets para control visual */
+    margin: 0;
+    padding: 0;
+}
+
+.benefit-list li {
+    position: relative;
+    padding-left: 28px;
+    margin-bottom: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    line-height: 1.35;
+    font-size: clamp(13px, 1.6vw, 18px);
+    color: #111;
+}
+
+/* custom bullet */
+.benefit-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #111;
+    transform: translateY(-2px);
+}
+
+/* ligeramente menos espaciado en strings muy largas en pantallas pequeñas */
+@media (max-width: 880px) {
+    .benefits {
+        padding-top: 22px;
+        padding-bottom: 36px;
+    }
+
+    .benefit-columns {
+        grid-template-columns: 1fr;
+    }
+
+    .benefits-title {
+        text-align: center;
+        margin-bottom: 14px;
+        font-size: clamp(18px, 4vw, 28px);
+    }
+
+    .benefit-list li {
+        text-align: left;
+        padding-left: 24px;
+        margin-bottom: 14px;
+        font-size: clamp(13px, 3.8vw, 16px);
+    }
+}
+
+/* ajuste fino para muy pequeños */
+@media (max-width: 420px) {
+    .benefit-list li::before {
+        top: 9px;
+        width: 7px;
+        height: 7px;
+    }
+}

@@ -1,0 +1,35 @@
+.empresa-section {
+    padding: 80px 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.empresa-title {
+    text-align: center;
+    font-size: 42px;
+    margin-bottom: 50px;
+}
+
+.empresa-container {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.empresa-text p {
+    margin-bottom: 18px;
+    line-height: 1.6;
+    font-size: 18px;
+    color: #333;
+}
+
+.empresa-text strong {
+    font-weight: 700;
+}
+
+.empresa-image img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}

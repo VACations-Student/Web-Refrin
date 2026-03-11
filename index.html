@@ -10,29 +10,36 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/beneficios.css">
+    <link rel="stylesheet" href="css/carrousel.css">
+    <link rel="stylesheet" href="css/comparacion.css">
+    <link rel="stylesheet" href="css/empresa.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/productos.css">
+
 </head>
 
 <body>
     <header class="site-header">
-        <nav class="navbar" role="navigation" aria-label="Main">
+        <nav class="navbar">
+
             <a class="brand" href="/">
-                <!-- Replace with your logo file (PNG or SVG). Keep it square to match the look) -->
                 <img src="images/logos/refrin-logo.png" alt="Refrin logo">
             </a>
 
-            <!-- CSS-only toggle (checkbox hack) -->
-            <input id="nav-toggle" class="nav-toggle" type="checkbox" aria-hidden="true">
-            <label class="nav-toggle-label" for="nav-toggle" aria-hidden="true">
-                <span></span>
-            </label>
+            <button class="hamburger" id="hamburger">
+                ☰
+            </button>
 
-            <ul class="nav-links">
+            <ul class="nav-links" id="navMenu">
                 <li><a href="#">INICIO</a></li>
                 <li><a href="#">PRODUCTOS</a></li>
                 <li><a href="#">CLIENTES</a></li>
                 <li><a href="#">NOSOTROS</a></li>
                 <li><a href="#">CONTACTO</a></li>
             </ul>
+
         </nav>
     </header>
 
@@ -50,7 +57,696 @@
                 </div>
             </div>
         </section>
+
+        <div class="section-separator" aria-hidden="true"></div>
+
+        <!-- sección de historia de la empresa, con texto a la izquierda y foto a la derecha, usando flexbox o grid para el layout -->
+        <section class="empresa-section">
+
+            <h2 class="empresa-title">NUESTRA EMPRESA</h2>
+
+            <div class="empresa-container">
+
+                <div class="empresa-text">
+
+                    <p><strong>Fundada en 1943</strong> como consultora de ingeniería para realizar proyectos
+                        de obras industriales completas (obras civiles, electromecánicos y de
+                        refrigeración industrial).</p>
+
+                    <p><strong>En 1959</strong> Refrin amplió su actividad con la fabricación e instalación de
+                        equipamiento de refrigeración industrial (evaporadores,
+                        condensadores, congeladores de placa, recipientes a presión etc.),
+                        ofreciendo todo tipo de soluciones para los procesos de enfriado,
+                        congelado y almacenamiento de productos alimenticios.</p>
+
+                    <p><strong>Desde 1993</strong> somos representantes exclusivos para Mercosur de la firma
+                        Inglesa Storax Racking System que fue comprada por la Belga Stow
+                        group, líder mundial en la provisión de estanterías móviles de alta
+                        densidad de almacenamiento para cámaras frías y centros de
+                        distribución.</p>
+
+                    <p>También representamos a la firma Alemán <strong>Lamilux</strong>, líder mundial en
+                        fabricación de paneles sanitarios de PRFV (Plástico Reforzado Fibra de
+                        Vidrio). Hemos sido pioneros en Argentina en importar y colocar
+                        material de PRFV, actividad que comenzamos en <strong>1980</strong>.</p>
+
+                    <p>Con una trayectoria de mas de <strong>80 años</strong>, Refrin les ofrece las mejores
+                        soluciones para la industria alimenticia.</p>
+
+                </div>
+
+                <div class="empresa-image">
+                    <img src="../Web-Refrin/images/fotos/refrin-founders.jpeg" alt="Historia de Refrin">
+                </div>
+
+            </div>
+
+        </section>
+
+        <div class="section-separator" aria-hidden="true"></div>
+
+        <!-- PRODUCTOS -->
+        <section class="products" id="productos">
+
+            <!-- camioneta con paneles de PRFV + bullets con características principales -->
+            <div class="container">
+                <h2 class="page-title">NUESTROS PRODUCTOS</h2>
+
+                <!-- Heading de la primera parte -->
+                <h3 class="product-heading">1 - PANELES TÉRMICOS REVESTIDOS CON LÁMINAS DE PRFV</h3>
+
+                <!-- Row: bullets (izq) + foto del camión (der) -->
+                <div class="product-row">
+                    <div class="product-bullets" role="list">
+                        <ul>
+                            <li>Panel autoportante</li>
+                            <li>Núcleo en poliestireno expandido (EPS)</li>
+                            <li>Núcleo en poliuretano inyectado (PUR y PIR)</li>
+                            <li>Núcleo en lana de roca (LDR)</li>
+                            <li>Espesores variables entre 40 y 200 mm</li>
+                            <li>Espesor del PRFV entre 1,2 y 2,0 mm</li>
+                            <li>Ancho útil 1,00 / 1,22 m</li>
+                            <li>Muy fácil de instalar</li>
+                            <li>Obra limpia en seco</li>
+                        </ul>
+                    </div>
+
+                    <figure class="product-figure" aria-hidden="true">
+                        <!-- MANTENÉ EXACTAMENTE TU RUTA -->
+                        <img src="../Web-Refrin/images/fotos/Camion.jpg" alt="Foto de un camión de Refrin">
+                    </figure>
+                </div>
+            </div>
+
+            <div class="section-separator" style="margin: clamp(28px, 4.5vw, 56px) 0 48px;" aria-hidden="true"></div>
+
+            <!-- PLACAS DE PRFV PARA REVESTIMIENTO DE PAREDES con CARROUSEL -->
+            <div class="container">
+                <!-- ===== A PARTIR DE AQUI: CARRUSEL DE PRODUCTOS ===== -->
+                <h3 class="product-heading">2 - PLACAS DE PRFV PARA REVESTIMIENTO DE PAREDES</h3>
+
+                <div class="products-carousel" aria-roledescription="carousel" aria-label="Productos PRFV">
+                    <button class="carousel-control prev" aria-label="Anterior producto">&lsaquo;</button>
+
+                    <div class="carousel-track-wrapper">
+                        <ul class="carousel-track">
+                            <li class="carousel-slide" data-title="PRFV GOFRADO"
+                                data-desc="Panel con textura gofrada, buen agarre estético y resistencia.">
+                                <img src="../Web-Refrin/images/flyers/1 - GOFRADO-B.jpg" alt="Muestra PRFV Gofrado">
+                            </li>
+
+                            <li class="carousel-slide" data-title="PRFV LISO"
+                                data-desc="Superficie lisa, ideal para ambientes sanitarios y fácil limpieza.">
+                                <img src="../Web-Refrin/images/flyers/2 - LISO - B.jpg" alt="Muestra PRFV Liso">
+                            </li>
+
+                            <li class="carousel-slide" data-title="PRFV HIGH IMPACT"
+                                data-desc="Alta resistencia mecánica para zonas de mucho impacto.">
+                                <img src="../Web-Refrin/images/flyers/4 - HIGHIMPACT - B.jpg"
+                                    alt="Muestra PRFV High Impact">
+                            </li>
+
+                            <li class="carousel-slide" data-title="PRFV ANTIBAC"
+                                data-desc="Acabado con propiedades antibacterianas, indicado para salas blancas.">
+                                <img src="../Web-Refrin/images/flyers/6 - LISO ANTIBACTERIAL - HOSPITALES.jpg"
+                                    alt="Muestra PRFV Antibac">
+                            </li>
+                        </ul>
+                    </div>
+
+                    <button class="carousel-control next" aria-label="Siguiente producto">&rsaquo;</button>
+                </div>
+
+                <div class="carousel-caption" id="carouselCaption" aria-live="polite">
+                    <h4 class="caption-title"></h4>
+                    <p class="caption-desc"></p>
+                </div>
+
+                <div class="carousel-dots" role="tablist" aria-label="Seleccionar producto"></div>
+            </div>
+
+            <div class="section-separator" style="margin: clamp(28px, 4.5vw, 56px) 0 48px;" aria-hidden="true"></div>
+
+            <!-- PLACAS DE PRFV PARA REVESTIMIENTO DE PAREDES  con foto a la derecha-->
+            <div class="container">
+                <!-- Heading de la primera parte -->
+                <h3 class="product-heading">2 - PLACAS DE PRFV PARA REVESTIMIENTO DE PAREDES</h3>
+
+                <!-- Row: bullets (izq) + foto del camión (der) -->
+                <div class="product-row">
+                    <div class="product-bullets" role="list">
+                        <ul>
+                            <li style="margin: clamp(18px, 4.5vw, 36px) 0 28px;">ALTA RESISTENCIA A LA HUMEDAD Y AL MOHO
+                            </li>
+                            <li style="margin: clamp(18px, 4.5vw, 36px) 0 28px;">ALTA RESISTENCIA A LOS AGENTES QUÍMICOS
+                            </li>
+                            <li style="margin: clamp(18px, 4.5vw, 36px) 0 28px;">FACIL DE LIMPIAR</li>
+                            <li style="margin: clamp(18px, 4.5vw, 36px) 0 28px;">ACABADO CON GELCOAT, CAPA PROTECTORA
+                                CONTRA LOS RAYOS UV</li>
+                            <li style="margin: clamp(18px, 4.5vw, 36px) 0 28px;">ESPESORES DE PLACAS ENTRE 1,00 Y 2,2mm
+                            </li>
+                            <li style="margin: clamp(18px, 4.5vw, 36px) 0 28px;">FACIL INSTALACION</li>
+                            <li style="margin: clamp(18px, 4.5vw, 36px) 0 28px;">CUMPLE CON LAS NORMAS DE HIGIENE E
+                                INOCUIDAD ALIMENTICIA</li>
+                            <li style="margin: clamp(18px, 4.5vw, 36px) 0 28px;">GRAN BRILLO Y PERMANENCIA DEL COLOR
+                            </li>
+                            <li style="margin: clamp(18px, 4.5vw, 36px) 0 28px;">MUY BAJO COSTO DE MANTENIMIENTO</li>
+                        </ul>
+                    </div>
+
+                    <figure class="product-figure" aria-hidden="true">
+                        <!-- MANTENÉ EXACTAMENTE TU RUTA -->
+                        <img src="../Web-Refrin/images/flyers/Flayer lamilux.jpg" alt="Flyer lamilux">
+                    </figure>
+                </div>
+            </div>
+
+            <div class="section-separator" style="margin: clamp(28px, 4.5vw, 56px) 0 48px;" aria-hidden="true"></div>
+
+            <!-- PLACAS DE PRFV PARA CIELORRASO PARA COCINAS con foto a la derecha -->
+            <div class="container">
+
+                <!-- Heading de la primera parte -->
+                <h3 class="product-heading">3 - PLACAS DE PRFV PARA CIELORRASO PARA COCINAS</h3>
+
+                <!-- Row: bullets (izq) + foto del camión (der) -->
+                <div class="product-row">
+                    <div class="product-bullets" role="list">
+                        <ul>
+                            <li>TOTALMENTE SANITARIO</li>
+                            <li style="margin: clamp(18px, 4.5vw, 36px) 0 28px;">NO NECESITA MANTENIMIENTO</li>
+                            <li style="margin: clamp(18px, 4.5vw, 36px) 0 28px;">RAPIDA Y FACIL INSTALACION</li>
+                            <li style="margin: clamp(18px, 4.5vw, 36px) 0 28px;">FACIL DE LIMPIAR</li>
+                            <li style="margin: clamp(18px, 4.5vw, 36px) 0 28px;">DIMENSIONES: 61 x 61cm</li>
+                            <li style="margin: clamp(18px, 4.5vw, 36px) 0 28px;">OBRA LIMPIA EN SECO</li>
+                            <li style="margin: clamp(18px, 4.5vw, 36px) 0 28px;">GRILLA METALICA O PLASTICA</li>
+                            <li style="margin: clamp(18px, 4.5vw, 36px) 0 28px;">IDEAL PARA COCINAS INDUSTRIALES</li>
+                            <li style="margin: clamp(18px, 4.5vw, 36px) 0 28px;">IDEAL PARA COCINAS DE RESTAURANTES Y
+                                FAST FOOD</li>
+                        </ul>
+                    </div>
+
+                    <figure class="product-figure" aria-hidden="true">
+                        <!-- MANTENÉ EXACTAMENTE TU RUTA -->
+                        <img src="../Web-Refrin/images/flyers/CIELORRASO PLACAS DE PRFV.jpg"
+                            alt="Flyer Cielorraso PRFV">
+                    </figure>
+                </div>
+            </div>
+
+            <div class="section-separator" style="margin: clamp(28px, 4.5vw, 56px) 0 48px;" aria-hidden="true"></div>
+
+            <!-- ACCESORIOS SANITARIOS con CARROUSEL -->
+            <div class="container">
+                <!-- ===== A PARTIR DE AQUI: CARRUSEL DE PRODUCTOS ===== -->
+                <h3 class="product-heading">4 - ACCESORIOS SANITARIOS</h3>
+
+                <div class="products-carousel" aria-roledescription="carousel" aria-label="Productos PRFV">
+                    <button class="carousel-control prev" aria-label="Anterior producto">&lsaquo;</button>
+
+                    <div class="carousel-track-wrapper">
+                        <ul class="carousel-track">
+                            <li class="carousel-slide" data-title="ZOCALOS" data-desc="">
+                                <img src="../Web-Refrin/images/flyers/Flyer Zocalos-A.jpg" alt="Muestra ZOCALOS">
+                            </li>
+
+                            <li class="carousel-slide" data-title="CORTE Y PLEGADO DE CHAPAS" data-desc="">
+                                <img src="../Web-Refrin/images/flyers/Flyer Corte y plegado de chapas FINAL.jpg"
+                                    alt="Muestra CORTE Y PLEGADO DE CHAPAS">
+                            </li>
+
+                            <li class="carousel-slide" data-title="1- MOLDURAS EXTRUIDAS DE PVC" data-desc="">
+                                <img src="../Web-Refrin/images/flyers/ACCESORIOS - Crane.jpg"
+                                    alt="Muestra 1- MOLDURAS EXTRUIDAS DE PVC">
+                            </li>
+
+                            <li class="carousel-slide" data-title="2- MOLDURAS EXTRUIDAS DE PVC" data-desc="">
+                                <img src="../Web-Refrin/images/flyers/ACCESORIOS 1 - MOLDURAS PVC.jpg"
+                                    alt="Muestra 2- MOLDURAS EXTRUIDAS DE PVC">
+                            </li>
+                        </ul>
+                    </div>
+
+                    <button class="carousel-control next" aria-label="Siguiente producto">&rsaquo;</button>
+                </div>
+
+                <div class="carousel-caption" id="carouselCaption" aria-live="polite">
+                    <h4 class="caption-title"></h4>
+                    <p class="caption-desc"></p>
+                </div>
+
+                <div class="carousel-dots" role="tablist" aria-label="Seleccionar producto"></div>
+            </div>
+
+            <div class="section-separator" style="margin: clamp(28px, 4.5vw, 56px) 0 48px;" aria-hidden="true"></div>
+
+            <!-- PLACAS DE PRFV DECORACION con CARROUSEL A LA DERECHA -->
+            <div class="container">
+
+                <!-- Heading de la primera parte -->
+                <h3 class="product-heading">5 - PLACAS DE PRFV PARA DECORACION</h3>
+
+                <!-- Row: bullets (izq) + foto del camión (der) -->
+                <div class="product-row">
+                    <div class="product-bullets" role="list">
+                        <ul>
+                            <li>PARA OBRAS DE ARQUITECTURA E INTERIORES</li>
+                            <li style="margin: clamp(18px, 4.5vw, 36px) 0 28px;">LAMINAS DECORATIVAS DE ALTA CALIDAD
+                            </li>
+                            <li style="margin: clamp(18px, 4.5vw, 36px) 0 28px;">GRAN VARIEDAD DE DISEÑOS</li>
+                            <li style="margin: clamp(18px, 4.5vw, 36px) 0 28px;">RAPIDA Y FACIL INSTALACION</li>
+                            <li style="margin: clamp(18px, 4.5vw, 36px) 0 28px;">FACIL DE LIMPIAR</li>
+                            <li style="margin: clamp(18px, 4.5vw, 36px) 0 28px;">ALTA RESISTENCIA A LA HUMEDAD Y AL
+                                MOHO/li>
+                            <li style="margin: clamp(18px, 4.5vw, 36px) 0 28px;">OBRA LIMPIA EN SECO</li>
+                            <li style="margin: clamp(18px, 4.5vw, 36px) 0 28px;">ALTA RESISTENCIA A LAS MANCHAS</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <div class="products-carousel" aria-roledescription="carousel" aria-label="Productos PRFV">
+                            <button class="carousel-control prev" aria-label="Anterior producto">&lsaquo;</button>
+
+                            <div class="carousel-track-wrapper">
+                                <ul class="carousel-track">
+                                    <li class="carousel-slide" data-title="PRFV DECORACION" data-desc="">
+                                        <img src="../Web-Refrin/images/flyers/5 - DECORACION - B.jpg"
+                                            alt="Muestra PRFV DECORACION">
+                                    </li>
+
+                                    <li class="carousel-slide" data-title="PRFV DECORACION NEGRO" data-desc="">
+                                        <img src="../Web-Refrin/images/flyers/7 - DECORACION - NEGRO - D.jpg"
+                                            alt="Muestra PRFV DECORACION NEGRO">
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <button class="carousel-control next" aria-label="Siguiente producto">&rsaquo;</button>
+                        </div>
+
+                        <div class="carousel-caption" id="carouselCaption" aria-live="polite">
+                            <h4 class="caption-title"></h4>
+                            <p class="caption-desc"></p>
+                        </div>
+
+                        <div class="carousel-dots" role="tablist" aria-label="Seleccionar producto"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-separator" style="margin: clamp(28px, 4.5vw, 56px) 0 48px;" aria-hidden="true"></div>
+
+            <!-- PANELES TERMICOS REVESTIDOS CON CHAPA DE ACERO GALVANIZADA REPINTADA con foto a la derecha -->
+            <div class="container">
+
+                <!-- Heading de la primera parte -->
+                <h3 class="product-heading">6 - PANELES TERMICOS REVESTIDOS CON CHAPA DE ACERO GALVANIZADA REPINTADA
+                </h3>
+
+                <!-- Row: bullets (izq) + foto del camión (der) -->
+                <div class="product-row">
+                    <div class="product-bullets" role="list">
+                        <ul>
+                            <li>PANELES AUTOPORTANTES</li>
+                            <li style="margin: clamp(18px, 4.5vw, 36px) 0 28px;">NUCLEO EN POLIESTIRENO EXPANDIDO (EPS)
+                            </li>
+                            <li style="margin: clamp(18px, 4.5vw, 36px) 0 28px;">NUCLEO EN POLIURETANO INYECTADO (PUR Y
+                                PIR)</li>
+                            <li style="margin: clamp(18px, 4.5vw, 36px) 0 28px;">NUCLEO EN LANA DE ROCA (LDR)</li>
+                            <li style="margin: clamp(18px, 4.5vw, 36px) 0 28px;">ESPESORES VARIABLES ENTRE 40 Y 200mm
+                            </li>
+                            <li style="margin: clamp(18px, 4.5vw, 36px) 0 28px;">ESPESOR DE LA CHAPA DE 0,5mm</li>
+                            <li style="margin: clamp(18px, 4.5vw, 36px) 0 28px;">ANCHO UTIL 1,00 / 1,22mm</li>
+                            <li style="margin: clamp(18px, 4.5vw, 36px) 0 28px;">MUY FACIL DE INSTALAR</li>
+                            <li style="margin: clamp(18px, 4.5vw, 36px) 0 28px;">OBRA LIMPIA EN SECO</li>
+                        </ul>
+                    </div>
+
+                    <figure class="product-figure" aria-hidden="true">
+                        <!-- MANTENÉ EXACTAMENTE TU RUTA -->
+                        <img src="../Web-Refrin/images/fotos/CHAPAdeACEROGALVANIZADA.jpg" alt="Flyer Cielorraso PRFV">
+                    </figure>
+                </div>
+            </div>
+
+            <div class="section-separator" style="margin: clamp(28px, 4.5vw, 56px) 0 48px;" aria-hidden="true"></div>
+
+            <!-- PRFV PARA TRAILERS con CARROUSEL A LA DERECHA -->
+            <div class="container">
+
+                <!-- Heading de la primera parte -->
+                <h3 class="product-heading">7 - PRFV PARA TRAILERS</h3>
+
+                <!-- Row: bullets (izq) + foto del camión (der) -->
+                <div class="product-row">
+                    <div class="product-bullets" role="list">
+                        <ul>
+                            <li>MAYOR RESISTENCIA A LA CORROSION QUE EL ALUMNIO</li>
+                            <li style="margin: clamp(18px, 4.5vw, 36px) 0 28px;">MAYOR RESISTENCIA AL GRANIZO QUE EL
+                                ALUMINIO</li>
+                            <li style="margin: clamp(18px, 4.5vw, 36px) 0 28px;">REPARACION MAS FACIL QUE LA DE LOS
+                                REVESTIMIENTOS METALICOS</li>
+                            <li style="margin: clamp(18px, 4.5vw, 36px) 0 28px;">ACABADO CON GELCOAT, CAPA PROTECTORA
+                                CONTRA LOS RAYOES UV</li>
+                            <li style="margin: clamp(18px, 4.5vw, 36px) 0 28px;">BAJO PESO Y ALTA RESISTENCIA MECANICA
+                            </li>
+                            <li style="margin: clamp(18px, 4.5vw, 36px) 0 28px;">LARGA VIDA UTIL</li>
+                            <li style="margin: clamp(18px, 4.5vw, 36px) 0 28px;">DISPONIBLE EN VARIOS COLORES</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <div class="products-carousel" aria-roledescription="carousel" aria-label="Productos PRFV">
+                            <button class="carousel-control prev" aria-label="Anterior producto">&lsaquo;</button>
+
+                            <div class="carousel-track-wrapper">
+                                <ul class="carousel-track">
+                                    <li class="carousel-slide" data-title="EXTERIOR TRAILER" data-desc="">
+                                        <img src="../Web-Refrin/images/fotos/TRAILERporAFUERA.jpg"
+                                            alt="Muestra EXTERIOR TRAILER">
+                                    </li>
+
+                                    <li class="carousel-slide" data-title="1- INTERIOR TRAILER" data-desc="">
+                                        <img src="../Web-Refrin/images/fotos/TRAILERporADENTRO1.jpg"
+                                            alt="Muestra INTERIOR TRAILER">
+                                    </li>
+
+                                    <li class="carousel-slide" data-title="2- INTERIOR TRAILER" data-desc="">
+                                        <img src="../Web-Refrin/images/fotos/TRAILERporADENTRO2.jpg"
+                                            alt="Muestra INTERIOR TRAILER">
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <button class="carousel-control next" aria-label="Siguiente producto">&rsaquo;</button>
+                        </div>
+
+                        <div class="carousel-caption" id="carouselCaption" aria-live="polite">
+                            <h4 class="caption-title"></h4>
+                            <p class="caption-desc"></p>
+                        </div>
+
+                        <div class="carousel-dots" role="tablist" aria-label="Seleccionar producto"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-separator" style="margin: clamp(28px, 4.5vw, 56px) 0 48px;" aria-hidden="true"></div>
+
+            <!-- CONTENEDORES / SHELTERS con CARROUSEL ABAJO -->
+            <div class="container container-carousel-bottom">
+
+                <h3 class="product-heading">8 - CONTENEDORES / SHELTERS</h3>
+
+                <div class="product-row">
+                    <div class="product-bullets" role="list">
+                        <ul>
+                            <li>IDEAL PARA OBRADORES EN TODAS LAS INDUSTRIAS</li>
+                            <li style="margin: clamp(18px, 4.5vw, 36px) 0 28px;">
+                                SHELTERS PARA EQUIPOS ELECTRICOS Y DE TELECOMUNICACIONES
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <div class="products-carousel" aria-roledescription="carousel" aria-label="Productos PRFV">
+                            <button class="carousel-control prev" aria-label="Anterior producto">&lsaquo;</button>
+
+                            <div class="carousel-track-wrapper">
+                                <ul class="carousel-track">
+                                    <li class="carousel-slide" data-title="1- EXTERIOR SHELTER" data-desc="">
+                                        <img src="../Web-Refrin/images/fotos/SHELTERporAFUERA1.jpg"
+                                            alt="Muestra EXTERIOR SHELTER">
+                                    </li>
+
+                                    <li class="carousel-slide" data-title="2- EXTERIOR SHELTER" data-desc="">
+                                        <img src="../Web-Refrin/images/fotos/SHELTERporAFUERA2.jpg"
+                                            alt="Muestra INTERIOR SHELTER">
+                                    </li>
+
+                                    <li class="carousel-slide" data-title="INTERIOR SHELTER" data-desc="">
+                                        <img src="../Web-Refrin/images/fotos/SHELTERporADENTRO.jpg"
+                                            alt="Muestra INTERIOR SHELTER">
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <button class="carousel-control next" aria-label="Siguiente producto">&rsaquo;</button>
+                        </div>
+
+                        <div class="carousel-caption" id="carouselCaption" aria-live="polite">
+                            <h4 class="caption-title"></h4>
+                            <p class="caption-desc"></p>
+                        </div>
+
+                        <div class="carousel-dots" role="tablist" aria-label="Seleccionar producto"></div>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+        <div class="section-separator" aria-hidden="true"></div>
+        <!-- BENEFICIOS / VENTAJAS (colocar justo después de la sección .hero) -->
+        <section class="benefits">
+            <div class="container">
+                <h2 class="benefits-title">DONDE SE USA EL PRFV</h2>
+
+                <div class="benefit-columns" role="list">
+                    <ul class="benefit-list" aria-label="Ventajas columna izquierda">
+                        <li>PLANTAS PROCESADORES EN LA INDUSTRIA: CARNICA - AVICOLA - LACTEA - PESQUERA - PANIFICACION -
+                            BEBIDAS CON Y SIN ALCOHOL</li>
+                        <li>CAMARAS FRIAS</li>
+                        <li>INDUSTRIA FARMACEUTICA Y LABORATORIOS</li>
+                        <li>COCINAS DE RESTAURANTES Y FAST FOOD</li>
+                        <li>HOSPITALES, CLINICAS, SANATORIOS, QUIROFANOS</li>
+                        <li>ESCUELAS</li>
+                        <li>CONTENEDORES / SHELTERS</li>
+                    </ul>
+
+                    <ul class="benefit-list" aria-label="Ventajas columna derecha">
+                        <li>SUPERMERCADOS</li>
+                        <li>LAVADEROS DE AUTOS</li>
+                        <li>PLANTAS DE PROCESOS QUIMICOS</li>
+                        <li>TRANSPORTE</li>
+                        <li>HOTELES</li>
+                        <li>DEPOSITOS INDUSTRIALES</li>
+                        <li>VESTUARIOS INDUSTRIALES</li>
+                        <li>TRAILERS, "CASAS RODANTES"</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-separator" aria-hidden="true"></div>
+        <!-- BENEFICIOS / VENTAJAS (colocar justo después de la sección .hero) -->
+        <section class="benefits">
+            <div class="container">
+                <h2 class="benefits-title">VENTAJAS DE UTILIZAR PRFV EN LA CONSTRUCCIÓN</h2>
+
+                <div class="benefit-columns" role="list">
+                    <ul class="benefit-list" aria-label="Ventajas columna izquierda">
+                        <li>Permite renovar a nuevas las paredes deterioradas por el transcurso del tiempo y uso</li>
+                        <li>Fácil de limpiar</li>
+                        <li>Alta resistencia a la humedad y al moho</li>
+                        <li>Alta resistencia a los agentes químicos</li>
+                        <li>Alta resistencia a las manchas</li>
+                        <li>Alta resistencia al crecimiento bacteriano</li>
+                        <li>Acabado con gelcoat, capa protectora contra los rayos UV</li>
+                        <li>Muy fácil de instalar</li>
+                    </ul>
+
+                    <ul class="benefit-list" aria-label="Ventajas columna derecha">
+                        <li>Cumple con las normas de higiene e inocuidad alimenticia</li>
+                        <li>Larga vida útil</li>
+                        <li>Accesorios, molduras y remaches para completar la instalación</li>
+                        <li>Certificaciones internacionales</li>
+                        <li>Gran brillo y permanencia del color</li>
+                        <li>No necesita realizar obra húmeda</li>
+                        <li>Muy bajo costo de mantenimiento</li>
+                        <li>Disponible en varios colores</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-separator" aria-hidden="true"></div>
+        <!-- comparacion con las desventajas de los productos tradicionales (colocar justo después de la sección .benefits) -->
+        <section class="comparison-section">
+
+            <h2 class="comparison-title">
+                DESVENTAJAS DE LOS PRODUCTOS TRADICIONALES
+            </h2>
+
+            <table class="comparison-table">
+
+                <thead>
+                    <tr>
+                        <th>Azulejos</th>
+                        <th>Paneles Sandwich revestidos<br>con aluminio o acero inoxidable</th>
+                        <th>Pinturas Epóxicas</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>Juntas permanentemente sucias</td>
+                        <td>Alto costo</td>
+                        <td>Alto costo por m²</td>
+                    </tr>
+
+                    <tr>
+                        <td>Se dañan fácilmente por impacto</td>
+                        <td>Propenso a abollarse y corroerse con el tiempo</td>
+                        <td>Requiere repintado frecuente y mantenimiento constante</td>
+                    </tr>
+
+                    <tr>
+                        <td>Hay que reemplazarlos frecuentemente</td>
+                    </tr>
+
+                    <tr>
+                        <td>Instalación húmeda y lenta</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+        <div class="section-separator" aria-hidden="true"></div>
+        <div class="container">
+            <div class="products-carousel" aria-roledescription="carousel" aria-label="Antes y Despues">
+                <button class="carousel-control prev" aria-label="Anterior producto">&lsaquo;</button>
+
+                <div class="carousel-track-wrapper">
+                    <ul class="carousel-track">
+                        <!-- Slide 1 -->
+                        <li class="carousel-slide" data-title="ANTES Y DESPUES 1"
+                            data-desc="ANTES Y DESPUES DE INSTALAR PLACAS O PANELES PRFV EN LAS PAREDES">
+                            <div class="split-slide">
+                                <div class="split-side left">
+                                    <!-- left image (before) -->
+                                    <img src="../Web-Refrin/images/fotos/ad1.jpg" alt="Antes - ejemplo 1">
+                                </div>
+
+                                <div class="split-side right">
+                                    <!-- right image (after) -->
+                                    <img src="../Web-Refrin/images/fotos/ad2.jpg" alt="Despues - ejemplo 1">
+                                </div>
+
+                                <!-- the text exactly centered horizontally and placed at the top -->
+                                <div class="split-title">ANTES Y DESPUES</div>
+                            </div>
+                        </li>
+
+                        <!-- Slide 2 -->
+                        <li class="carousel-slide" data-title="ANTES Y DESPUES 2"
+                            data-desc="ANTES Y DESPUES DE INSTALAR PLACAS O PANELES PRFV EN LAS PAREDES">
+                            <div class="split-slide">
+                                <div class="split-side left">
+                                    <img src="../Web-Refrin/images/fotos/ad3.jpg" alt="Antes - ejemplo 2">
+                                </div>
+
+                                <div class="split-side right">
+                                    <img src="../Web-Refrin/images/fotos/ad4.jpg" alt="Despues - ejemplo 2">
+                                </div>
+
+                                <div class="split-title">ANTES Y DESPUES</div>
+                            </div>
+                        </li>
+
+                        <!-- Slide 3 (add as many slides as you need) -->
+                        <li class="carousel-slide" data-title="ANTES Y DESPUES 3"
+                            data-desc="ANTES Y DESPUES DE INSTALAR PLACAS O PANELES PRFV EN LAS PAREDES">
+                            <div class="split-slide">
+                                <div class="split-side left">
+                                    <img src="../Web-Refrin/images/fotos/ad5.jpg" alt="Antes - ejemplo 3">
+                                </div>
+
+                                <div class="split-side right">
+                                    <img src="../Web-Refrin/images/fotos/ad6.jpg" alt="Despues - ejemplo 3">
+                                </div>
+
+                                <div class="split-title">ANTES Y DESPUES</div>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+
+                <button class="carousel-control next" aria-label="Siguiente producto">&rsaquo;</button>
+            </div>
+
+            <!-- the caption + dots are handled by your existing JS (it looks up .carousel-caption and .carousel-dots) -->
+            <div class="carousel-caption" id="carouselCaption" aria-live="polite">
+                <h4 class="caption-title"></h4>
+                <p class="caption-desc"></p>
+            </div>
+            <div class="carousel-dots" role="tablist" aria-label="Seleccionar producto"></div>
+        </div>
     </main>
+
+    <!-- script para menú hamburguesa -->
+    <script src="../Web-Refrin/scripts/hamburguer_menu.js" defer></script>
+
+    <!-- script carrusel básico y accesible, con autoplay y pausa al enfocar controles -->
+    <script src="../Web-Refrin/scripts/carrousel.js" defer></script>
+
+    <!-- footer de la pagina, con CTA para contacto y enlaces rápidos -->
+    <footer class="site-footer">
+        <!-- CTA central, encima del contenido -->
+
+        <div class="footer-main container">
+            <div class="footer-brand">
+                <img src="images/logos/refrin-logo.png" alt="Refrin logo">
+                <p>Talcahuano 768 9° Piso (C1013) | Buenos Aires, Argentina</p>
+                <p>(+54-11) 4374-8669</p>
+            </div>
+
+            <div class="footer-cta-wrap">
+                <div class="footer-cta container">
+                    <h2>CONTÁCTENOS</h2>
+
+                    <div class="cta-row">
+                        <a href="#" class="cta-button">Pedir Cotización →</a>
+
+                        <div class="cta-contact">
+                            <span>Mensaje por WhatsApp</span>
+                            <span class="sep">|</span>
+                            <span>info@refrin.com.ar</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <nav class="footer-links" aria-label="Enlaces rápidos">
+                <h4>Enlaces Rápidos</h4>
+                <ul>
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#">Productos</a></li>
+                    <li><a href="#">Nosotros</a></li>
+                    <li><a href="#">Casos de Éxito</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- barra inferior -->
+        <div class="footer-bottom">
+            <div class="container footer-bottom-inner">
+                <span>© 2025 Refrin. Todos los derechos reservados</span>
+                <div class="footer-legal">
+                    <a href="#">Política de Privacidad</a>
+                    <a href="#">Términos de Servicio</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
 </body>
 
 </html>
