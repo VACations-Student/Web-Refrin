@@ -242,3 +242,47 @@
 .carousel-dot[aria-selected="true"] {
     background: #333;
 }
+
+@media (max-width: 600px) {
+
+    /* stack vertically on very small devices if you prefer */
+    .split-slide {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .split-side {
+        height: 220px;
+    }
+
+    .split-title {
+        font-size: 20px;
+        top: 10px;
+        padding: 4px 10px;
+    }
+}
+
+/* Smaller screens: reduce height and font sizes */
+@media (max-width: 900px) {
+    .split-slide {
+        height: 420px;
+    }
+
+    .split-title {
+        font-size: 36px;
+        top: 20px;
+        padding: 6px 14px;
+    }
+}
+
+@media (max-width: 420px) {
+
+    .section-separator {
+        height: 48px;
+    }
+
+
+    .carousel-slide img {
+        max-height: 220px;
+    }
+}

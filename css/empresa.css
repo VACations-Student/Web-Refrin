@@ -33,3 +33,15 @@
     border-radius: 8px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
+
+@media (max-width: 768px) {
+
+    .empresa-container {
+        grid-template-columns: 1fr;
+    }
+
+    .empresa-image {
+        order: -1;
+    }
+
+}

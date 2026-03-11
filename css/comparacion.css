@@ -39,3 +39,22 @@
 .comparison-table td:before {
     content: "• ";
 }
+
+.comparison-table-wrapper{
+    width:100%;
+    overflow-x:auto;
+}
+
+@media (max-width: 768px){
+
+    .comparison-table{
+        min-width:700px;
+        font-size:16px;
+    }
+
+    .comparison-table th,
+    .comparison-table td{
+        padding:14px;
+    }
+
+}
