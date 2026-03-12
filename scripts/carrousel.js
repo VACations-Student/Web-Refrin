@@ -2,232 +2,143 @@
 // Reusable carousel supporting multiple .products-carousel instances on the page.
 // Adds robust touch/pointer dragging + resize handling for mobile.
 
+// carrousel_multi.js
 (function () {
-  const CAROUSEL_AUTOPLAY = true;
-  const AUTOPLAY_DELAY = 4500;
-  const TRANSITION_MS = 400;
-  const SWIPE_THRESHOLD_PX = 60; // swipe threshold to change slide
+  const AUTOPLAY_INTERVAL = 4000;
 
-  const carousels = Array.from(document.querySelectorAll('.products-carousel'));
-  if (!carousels.length) return;
-
-  carousels.forEach((carouselRoot, ci) => {
-    const track = carouselRoot.querySelector('.carousel-track');
+  function initCarousel(carousel) {
+    const track = carousel.querySelector('.carousel-track');
     if (!track) return;
 
-    // Elements inside this carousel
     const slides = Array.from(track.children);
-    const prevBtn = carouselRoot.querySelector('.carousel-control.prev');
-    const nextBtn = carouselRoot.querySelector('.carousel-control.next');
+    const prevBtn = carousel.querySelector('.carousel-control.prev');
+    const nextBtn = carousel.querySelector('.carousel-control.next');
 
-    const container = carouselRoot.parentElement || document;
-    let captionContainer = container.querySelector('.carousel-caption');
-    if (!captionContainer) {
-      captionContainer = document.createElement('div');
-      captionContainer.className = 'carousel-caption';
-      captionContainer.innerHTML = `<h4 class="caption-title"></h4><p class="caption-desc"></p>`;
-      container.appendChild(captionContainer);
-    }
-    const captionTitle = captionContainer.querySelector('.caption-title');
-    const captionDesc = captionContainer.querySelector('.caption-desc');
+    // Find the surrounding container (closest .container) to locate the caption/dots
+    const container = carousel.closest('.container') || carousel.parentElement;
+    const caption = container ? container.querySelector('.carousel-caption') : null;
+    const captionTitle = caption ? caption.querySelector('.caption-title') : null;
+    const captionDesc = caption ? caption.querySelector('.caption-desc') : null;
+    const dotsWrapper = container ? container.querySelector('.carousel-dots') : null;
 
-    let dotsContainer = container.querySelector('.carousel-dots');
-    if (!dotsContainer) {
-      dotsContainer = document.createElement('div');
-      dotsContainer.className = 'carousel-dots';
-      container.appendChild(dotsContainer);
-    }
-
-    // Style track for transitions
-    track.style.transition = `transform ${TRANSITION_MS}ms ease`;
-    track.style.display = track.style.display || 'flex';
-    track.style.willChange = 'transform';
-    slides.forEach(s => s.style.flex = s.style.flex || '0 0 100%');
-
-    // create dots
-    dotsContainer.innerHTML = '';
-    const dots = slides.map((slide, i) => {
-      slide.id = slide.id || `carousel-${ci}-slide-${i}`;
-      const btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = 'carousel-dot';
-      btn.setAttribute('role', 'tab');
-      btn.setAttribute('aria-controls', slide.id);
-      btn.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
-      btn.title = slide.dataset.title || `Slide ${i + 1}`;
-      btn.addEventListener('click', () => goTo(i));
-      dotsContainer.appendChild(btn);
-      return btn;
-    });
-
-    if (prevBtn) prevBtn.addEventListener('click', () => goTo(currentIndex - 1));
-    if (nextBtn) nextBtn.addEventListener('click', () => goTo(currentIndex + 1));
-
-    if (!carouselRoot.hasAttribute('tabindex')) carouselRoot.setAttribute('tabindex', '0');
-
-    carouselRoot.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowLeft') { e.preventDefault(); goTo(currentIndex - 1); }
-      if (e.key === 'ArrowRight') { e.preventDefault(); goTo(currentIndex + 1); }
-    });
-
-    // Autoplay
+    let current = 0;
     let autoplayTimer = null;
-    function startAutoplay() {
-      stopAutoplay();
-      if (!CAROUSEL_AUTOPLAY || slides.length <= 1) return;
-      autoplayTimer = setInterval(() => goTo(currentIndex + 1), AUTOPLAY_DELAY);
-    }
-    function stopAutoplay() {
-      if (autoplayTimer) { clearInterval(autoplayTimer); autoplayTimer = null; }
+    let isPaused = false;
+
+    // ensure slides display inline and take 100% width (the CSS should handle this; transform uses %)
+    function updateTrackPosition() {
+      track.style.transform = `translateX(-${current * 100}%)`;
+      updateCaptionAndDots();
     }
 
-    carouselRoot.addEventListener('mouseenter', stopAutoplay);
-    carouselRoot.addEventListener('mouseleave', startAutoplay);
-    [prevBtn, nextBtn, ...dots].forEach(el => {
-      if (!el) return;
-      el.addEventListener('focus', stopAutoplay);
-      el.addEventListener('blur', startAutoplay);
+    function updateCaptionAndDots() {
+      const active = slides[current];
+      if (active && active.dataset) {
+        if (captionTitle) captionTitle.textContent = active.dataset.title || '';
+        if (captionDesc) captionDesc.textContent = active.dataset.desc || '';
+      }
+      if (dotsWrapper) {
+        const dots = Array.from(dotsWrapper.children);
+        dots.forEach((d, i) => {
+          d.setAttribute('aria-selected', String(i === current));
+          d.classList.toggle('active', i === current);
+        });
+      }
+      // update aria-hidden / tabindex for slides (accessibility)
+      slides.forEach((s, i) => {
+        s.setAttribute('aria-hidden', i === current ? 'false' : 'true');
+        const focusables = s.querySelectorAll('a, button, input, [tabindex]');
+        focusables.forEach(el => el.setAttribute('tabindex', i === current ? '0' : '-1'));
+      });
+    }
+
+    function goTo(index) {
+      if (index < 0) index = slides.length - 1;
+      if (index >= slides.length) index = 0;
+      current = index;
+      updateTrackPosition();
+    }
+
+    function next() { goTo(current + 1); }
+    function prev() { goTo(current - 1); }
+
+    // Create dots
+    if (dotsWrapper) {
+      dotsWrapper.innerHTML = '';
+      slides.forEach((_, i) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'carousel-dot';
+        btn.setAttribute('role', 'tab');
+        btn.setAttribute('aria-selected', i === current ? 'true' : 'false');
+        btn.setAttribute('aria-label', `Slide ${i + 1}`);
+        btn.addEventListener('click', () => {
+          goTo(i);
+          restartAutoplay();
+        });
+        dotsWrapper.appendChild(btn);
+      });
+    }
+
+    // Hook controls
+    if (nextBtn) nextBtn.addEventListener('click', () => { next(); restartAutoplay(); });
+    if (prevBtn) prevBtn.addEventListener('click', () => { prev(); restartAutoplay(); });
+
+    // Keyboard navigation on carousel
+    carousel.addEventListener('keydown', (ev) => {
+      if (ev.key === 'ArrowLeft') { prev(); restartAutoplay(); ev.preventDefault(); }
+      if (ev.key === 'ArrowRight') { next(); restartAutoplay(); ev.preventDefault(); }
     });
 
-    // expose current index
-    let currentIndex = 0;
-    const total = slides.length;
+    // Pause on hover / focus
+    [carousel, prevBtn, nextBtn, caption, dotsWrapper].forEach(el => {
+      if (!el) return;
+      el.addEventListener('mouseenter', () => { isPaused = true; stopAutoplay(); });
+      el.addEventListener('mouseleave', () => { isPaused = false; startAutoplay(); });
+      el.addEventListener('focusin', () => { isPaused = true; stopAutoplay(); });
+      el.addEventListener('focusout', () => { isPaused = false; startAutoplay(); });
+    });
 
-    function updateUI(withoutTransition) {
-      // ensure transition is present unless caller asked otherwise
-      if (withoutTransition) {
-        track.style.transition = 'none';
-      } else {
-        track.style.transition = `transform ${TRANSITION_MS}ms ease`;
+    function startAutoplay() {
+      if (AUTOPLAY_INTERVAL <= 0 || isPaused) return;
+      stopAutoplay();
+      autoplayTimer = setInterval(() => { next(); }, AUTOPLAY_INTERVAL);
+    }
+
+    function stopAutoplay() {
+      if (autoplayTimer) {
+        clearInterval(autoplayTimer);
+        autoplayTimer = null;
       }
-
-      track.style.transform = `translateX(${-currentIndex * 100}%)`;
-      dots.forEach((d, idx) => d.setAttribute('aria-selected', idx === currentIndex ? 'true' : 'false'));
-      const cur = slides[currentIndex];
-      if (captionTitle) captionTitle.textContent = cur.dataset.title || '';
-      if (captionDesc) captionDesc.textContent = cur.dataset.desc || '';
     }
 
-    function goTo(i) {
-      currentIndex = ((i % total) + total) % total; // wrap
-      updateUI();
-      resetAutoplay();
-    }
-
-    function resetAutoplay() {
+    function restartAutoplay() {
       stopAutoplay();
       startAutoplay();
     }
 
-    // Keep carousel correctly placed on window resize
-    let resizeTimer = null;
-    function onResize() {
-      // freeze transition while resizing to prevent flicker
-      updateUI(true);
-      if (resizeTimer) clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(() => updateUI(false), 100);
-    }
-    window.addEventListener('resize', onResize);
-
-    // --- Touch / Pointer dragging (mobile friendly) ---
-    let startX = 0;
-    let currentTranslate = 0;
-    let isDragging = false;
-    let rafId = null;
-
-    function getEventX(e) {
-      if (e.touches && e.touches.length) return e.touches[0].clientX;
-      if (e.changedTouches && e.changedTouches.length) return e.changedTouches[0].clientX;
-      return e.clientX;
-    }
-
-    function onDragStart(e) {
-      // left mouse button only for mouse
-      if (e.type === 'pointerdown' && e.button && e.button !== 0) return;
-      isDragging = true;
-      startX = getEventX(e);
-      currentTranslate = -currentIndex * track.clientWidth;
-      track.style.transition = 'none';
-      stopAutoplay();
-
-      // prevent page selection/drag
-      document.documentElement.classList.add('carousel-dragging');
-      // for pointer events (if available)
-      if (e.pointerId && carouselRoot.setPointerCapture) {
-        try { carouselRoot.setPointerCapture(e.pointerId); } catch (err) { }
-      }
-    }
-
-    function onDragMove(e) {
-      if (!isDragging) return;
-      const nowX = getEventX(e);
-      const delta = nowX - startX;
-      const translate = currentTranslate + delta;
-      // convert px translate into percent for consistent transform with updateUI
-      const percent = (translate / track.clientWidth) * 100;
-      track.style.transform = `translateX(${percent}%)`;
-      e.preventDefault && e.preventDefault();
-    }
-
-    function onDragEnd(e) {
-      if (!isDragging) return;
-      isDragging = false;
-      const endX = getEventX(e);
-      const delta = endX - startX;
-
-      // re-enable transition
-      track.style.transition = `transform ${TRANSITION_MS}ms ease`;
-
-      if (Math.abs(delta) > SWIPE_THRESHOLD_PX) {
-        if (delta < 0) {
-          // swipe left -> next
-          goTo(currentIndex + 1);
-        } else {
-          // swipe right -> prev
-          goTo(currentIndex - 1);
-        }
-      } else {
-        // not enough: snap back
-        updateUI();
-      }
-
-      document.documentElement.classList.remove('carousel-dragging');
-
-      // for pointer events (if available)
-      if (e.pointerId && carouselRoot.releasePointerCapture) {
-        try { carouselRoot.releasePointerCapture(e.pointerId); } catch (err) { }
-      }
-
-      resetAutoplay();
-    }
-
-    // add both pointer and touch events (pointer covers most modern browsers)
-    track.addEventListener('pointerdown', onDragStart, { passive: true });
-    window.addEventListener('pointermove', onDragMove, { passive: false });
-    window.addEventListener('pointerup', onDragEnd);
-    window.addEventListener('pointercancel', onDragEnd);
-    // touch fallback
-    track.addEventListener('touchstart', onDragStart, { passive: true });
-    window.addEventListener('touchmove', onDragMove, { passive: false });
-    window.addEventListener('touchend', onDragEnd);
-    window.addEventListener('touchcancel', onDragEnd);
-
-    // prevent accidental text selection during drag
-    document.addEventListener('selectstart', (e) => {
-      if (isDragging) e.preventDefault();
+    // make track width flexible (each slide 100%) — relies on CSS but ensure transform works
+    track.style.transition = 'transform 400ms ease';
+    track.style.display = 'flex';
+    slides.forEach(s => {
+      s.style.minWidth = '100%';
+      s.style.boxSizing = 'border-box';
     });
 
-    // init
-    updateUI();
+    // Init
+    updateTrackPosition();
     startAutoplay();
 
-    // expose small API if needed
-    carouselRoot.__carousel = {
-      goTo,
-      next: () => goTo(currentIndex + 1),
-      prev: () => goTo(currentIndex - 1),
-      start: startAutoplay,
-      stop: stopAutoplay
-    };
+    // Recalculate on resize to ensure smooth behavior (keeps using percent so fine)
+    window.addEventListener('resize', () => {
+      // nothing heavy required — transform uses percent
+      updateTrackPosition();
+    });
+  }
+
+  // Initialize all carousels on the page
+  document.addEventListener('DOMContentLoaded', () => {
+    const carousels = Array.from(document.querySelectorAll('.products-carousel'));
+    carousels.forEach(initCarousel);
   });
 })();

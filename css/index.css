@@ -147,3 +147,28 @@ body {
     }
 
 }
+
+.lang-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    font-family: inherit;
+    font-size: 14px;
+    color: inherit;
+
+    padding: 6px 10px;
+}
+
+.lang-btn:hover {
+    opacity: 0.75;
+}
+
+.lang-icon {
+    display: flex;
+    align-items: center;
+}
