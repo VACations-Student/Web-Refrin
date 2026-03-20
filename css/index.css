@@ -172,3 +172,14 @@ body {
     display: flex;
     align-items: center;
 }
+
+.split-title {
+    font-size: clamp(14px, 2.5vw, 28px);
+}
+
+@media (max-width: 768px) {
+    .split-title {
+        font-size: 16px;
+        padding: 6px 10px; /* optional: reduce padding too */
+    }
+}
