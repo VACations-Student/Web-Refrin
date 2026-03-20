@@ -51,6 +51,19 @@ window.LANG_ES = {
     "p2_li9": "MUY BAJO COSTO DE MANTENIMIENTO",
     "p2_img_alt": "Flyer lamilux",
 
+    // CAROUSEL 2
+    "slide_2_1": "PRFV GOFRADO",
+    "slide_2_1_desc": "Panel con textura gofrada, gran estética y resistencia.",
+
+    "slide_2_2": "PRFV LISO",
+    "slide_2_2_desc": "Superficie lisa, ideal para ambientes sanitarios y fácil limpieza.",
+
+    "slide_2_3": "PRFV HIGH IMPACT",
+    "slide_2_3_desc": "Alta resistencia mecánica para zonas de mucho impacto.",
+
+    "slide_2_4": "PRFV ANTIBAC",
+    "slide_2_4_desc": "Acabado con propiedades antibacterianas, indicado para salas blancas.",
+
     "product_heading_4": "3 - PLACAS DE PRFV PARA CIELORRASO PARA COCINAS",
     "p3_li1": "TOTALMENTE SANITARIO",
     "p3_li2": "NO NECESITA MANTENIMIENTO",
@@ -69,6 +82,15 @@ window.LANG_ES = {
     "slide_4_3_img_alt": "Muestra 1- MOLDURAS EXTRUIDAS DE PVC",
     "slide_4_4_img_alt": "Muestra 2- MOLDURAS EXTRUIDAS DE PVC",
 
+    // CAROUSEL 4
+    "slide_4_1": "ZÓCALOS",
+
+    "slide_4_2": "CORTE Y PLEGADO DE CHAPAS",
+
+    "slide_4_3": "MOLDURAS DE PVC",
+
+    "slide_4_4": "MOLDURAS DE PVC",
+
     "product_heading_6": "5 - PLACAS DE PRFV PARA DECORACION",
     "p4_li1": "PARA OBRAS DE ARQUITECTURA E INTERIORES",
     "p4_li2": "LAMINAS DECORATIVAS DE ALTA CALIDAD",
@@ -78,6 +100,12 @@ window.LANG_ES = {
     "p4_li6": "ALTA RESISTENCIA A LA HUMEDAD Y AL MOHO",
     "p4_li7": "OBRA LIMPIA EN SECO",
     "p4_li8": "ALTA RESISTENCIA A LAS MANCHAS",
+
+
+    // CAROUSEL 5
+    "slide_5_1": "PRFV DECORATIVO",
+
+    "slide_5_2": "PRFV DECORACIÓN NEGRO",
 
     "product_heading_7": "6 - PANELES TERMICOS REVESTIDOS CON CHAPA DE ACERO GALVANIZADA REPINTADA",
     "p5_li1": "PANELES AUTOPORTANTES",
@@ -100,9 +128,23 @@ window.LANG_ES = {
     "p6_li6": "LARGA VIDA UTIL",
     "p6_li7": "DISPONIBLE EN VARIOS COLORES",
 
+    // CAROUSEL 7
+    "slide_7_1": "EXTERIOR TRAILER",
+
+    "slide_7_2": "INTERIOR TRAILER",
+
+    "slide_7_3": "INTERIOR TRAILER",
+
     "product_heading_9": "8 - CONTENEDORES / SHELTERS",
     "p7_li1": "IDEAL PARA OBRADORES EN TODAS LAS INDUSTRIAS",
     "p7_li2": "SHELTERS PARA EQUIPOS ELECTRICOS Y DE TELECOMUNICACIONES",
+
+    // CAROUSEL 8
+    "slide_8_1": "EXTERIOR SHELTER",
+
+    "slide_8_2": "EXTERIOR SHELTER",
+
+    "slide_8_3": "INTERIOR SHELTER",
 
     "benefits_where": "DONDE SE USA EL PRFV",
     "b1_li1": "PLANTAS PROCESADORES EN LA INDUSTRIA: CARNICA - AVICOLA - LACTEA - PESQUERA - PANIFICACION - BEBIDAS CON Y SIN ALCOHOL",
@@ -152,15 +194,19 @@ window.LANG_ES = {
     "comp_r3_c1": "Hay que reemplazarlos frecuentemente",
     "comp_r4_c1": "Instalación húmeda y lenta",
 
-    "ad_title_1": "ANTES Y DESPUES",
-    "ad_title_2": "ANTES Y DESPUES",
-    "ad_title_3": "ANTES Y DESPUES",
-    "ad1_before_alt": "Antes - ejemplo 1",
-    "ad1_after_alt": "Despues - ejemplo 1",
-    "ad2_before_alt": "Antes - ejemplo 2",
-    "ad2_after_alt": "Despues - ejemplo 2",
-    "ad3_before_alt": "Antes - ejemplo 3",
-    "ad3_after_alt": "Despues - ejemplo 3",
+
+    "ad_title_1": "ANTES Y DESPUÉS",
+    "ad_title_2": "ANTES Y DESPUÉS",
+    "ad_title_3": "ANTES Y DESPUÉS",
+
+    "ad_slide_1": "ANTES Y DESPUÉS 1",
+    "ad_slide_1_desc": "ANTES Y DESPUÉS DE INSTALAR PLACAS O PANELES PRFV EN LAS PAREDES",
+
+    "ad_slide_2": "ANTES Y DESPUÉS 2",
+    "ad_slide_2_desc": "ANTES Y DESPUÉS DE INSTALAR PLACAS O PANELES PRFV EN LAS PAREDES",
+
+    "ad_slide_3": "ANTES Y DESPUÉS 3",
+    "ad_slide_3_desc": "ANTES Y DESPUÉS DE INSTALAR PLACAS O PANELES PRFV EN LAS PAREDES",
 
     "footer_address": "Talcahuano 768 9° Piso (C1013) | Buenos Aires, Argentina",
     "footer_phone": "(+54-11) 4374-8669",

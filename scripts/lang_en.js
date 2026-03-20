@@ -30,10 +30,18 @@ window.LANG_EN = {
 
     "product_heading_2": "2 - FRP WALL PANELS",
 
+    // CAROUSEL 2 (WALL PANELS)
     "slide_2_1": "EMBOSSED FRP",
+    "slide_2_1_desc": "Embossed-texture panel with strong visual appeal and durability.",
+
     "slide_2_2": "SMOOTH FRP",
+    "slide_2_2_desc": "Smooth surface, ideal for sanitary environments and easy cleaning.",
+
     "slide_2_3": "HIGH IMPACT FRP",
+    "slide_2_3_desc": "High mechanical strength for high-impact areas.",
+
     "slide_2_4": "ANTIBACTERIAL FRP",
+    "slide_2_4_desc": "Antibacterial finish, suitable for cleanrooms.",
 
     "product_heading_3": "2 - FRP WALL PANELS",
     "p2_li1": "HIGH RESISTANCE TO MOISTURE AND MOLD",
@@ -59,6 +67,17 @@ window.LANG_EN = {
 
     "product_heading_5": "4 - SANITARY ACCESSORIES",
 
+
+    // CAROUSEL 4 (ACCESSORIES)
+    "slide_4_1": "BASEBOARDS",
+
+    "slide_4_2": "METAL SHEET CUTTING AND BENDING",
+
+    "slide_4_3": "PVC EXTRUDED MOLDINGS",
+
+    "slide_4_4": "PVC EXTRUDED MOLDINGS",
+
+
     "product_heading_6": "5 - FRP DECORATION PANELS",
     "p4_li1": "FOR ARCHITECTURAL AND INTERIOR DESIGNS",
     "p4_li2": "HIGH-QUALITY DECORATIVE SHEETS",
@@ -68,6 +87,13 @@ window.LANG_EN = {
     "p4_li6": "HIGH RESISTANCE TO MOISTURE AND MOLD",
     "p4_li7": "DRY CLEAN CONSTRUCTION",
     "p4_li8": "HIGH RESISTANCE TO STAINS",
+
+
+    // CAROUSEL 5 (DECORATION)
+    "slide_5_1": "DECORATIVE FRP",
+
+    "slide_5_2": "BLACK DECORATIVE FRP",
+
 
     "product_heading_7": "6 - SANDWICH INSULATED PANELS WITH PRE-PAINTED GALVANIZED STEEL SHEET",
     "p5_li1": "SELF-SUPPORTING PANELS",
@@ -89,9 +115,23 @@ window.LANG_EN = {
     "p6_li6": "LONG SERVICE LIFE",
     "p6_li7": "AVAILABLE IN VARIOUS COLORS",
 
+    // CAROUSEL 7 (TRAILERS)
+    "slide_7_1": "TRAILER EXTERIOR",
+
+    "slide_7_2": "TRAILER INTERIOR",
+
+    "slide_7_3": "TRAILER INTERIOR",
+
     "product_heading_9": "8 - CONTAINERS / SHELTERS",
     "p7_li1": "IDEAL FOR WORKSHOP SITE IN ALL INDUSTRIES",
     "p7_li2": "SHELTERS FOR ELECTRICAL AND TELECOMMUNICATIONS EQUIPMENT",
+
+    // CAROUSEL 8 (SHELTERS)
+    "slide_8_1": "SHELTER EXTERIOR",
+
+    "slide_8_2": "SHELTER EXTERIOR",
+
+    "slide_8_3": "SHELTER INTERIOR",
 
     "benefits_where": "WHERE FRP IS USED",
 
@@ -135,8 +175,39 @@ window.LANG_EN = {
     "ad_title_2": "BEFORE AND AFTER",
     "ad_title_3": "BEFORE AND AFTER",
 
+    "ad_slide_1": "BEFORE AND AFTER 1",
+    "ad_slide_1_desc": "BEFORE AND AFTER INSTALLING FRP PANELS ON WALLS",
+
+    "ad_slide_2": "BEFORE AND AFTER 2",
+    "ad_slide_2_desc": "BEFORE AND AFTER INSTALLING FRP PANELS ON WALLS",
+
+    "ad_slide_3": "BEFORE AND AFTER 3",
+    "ad_slide_3_desc": "BEFORE AND AFTER INSTALLING FRP PANELS ON WALLS",
+
+
     "footer_contact_title": "CONTACT US",
     "cta_quot": "REQUEST A QUOTE",
     "cta_whatsapp": "WHATSAPP",
-    "footer_copyright": "© 2025 Refrin. All rights reserved"
+    "footer_copyright": "© 2025 Refrin. All rights reserved",
+
+    "p1_img_alt": "Refrin truck photo",
+    "p2_img_alt": "Lamilux flyer",
+    "p3_img_alt": "FRP ceiling flyer",
+
+    "footer_address": "Talcahuano 768 9th Floor (C1013) | Buenos Aires, Argentina",
+    "footer_phone": "(+54-11) 4374-8669",
+    "cta_email": "info@refrin.com.ar",
+
+    "footer_links_title": "Quick Links",
+    "footer_link_home": "Home",
+    "footer_link_products": "Products",
+    "footer_link_about": "About Us",
+    "footer_link_cases": "Case Studies",
+    "footer_link_contact": "Contact",
+
+    "footer_privacy": "Privacy Policy",
+    "footer_terms": "Terms of Service",
+
+    "img_logo_alt": "Refrin logo",
+    "footer_logo_alt": "Refrin logo",
 };

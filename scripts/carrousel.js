@@ -2,11 +2,11 @@
 // Reusable carousel supporting multiple .products-carousel instances on the page.
 // Adds robust touch/pointer dragging + resize handling for mobile.
 
-// carrousel_multi.js
 (function () {
   const AUTOPLAY_INTERVAL = 4000;
 
   function initCarousel(carousel) {
+    let isTransitioning = false;
     const track = carousel.querySelector('.carousel-track');
     if (!track) return;
 
@@ -14,7 +14,6 @@
     const prevBtn = carousel.querySelector('.carousel-control.prev');
     const nextBtn = carousel.querySelector('.carousel-control.next');
 
-    // Find the surrounding container (closest .container) to locate the caption/dots
     const container = carousel.closest('.container') || carousel.parentElement;
     const caption = container ? container.querySelector('.carousel-caption') : null;
     const captionTitle = caption ? caption.querySelector('.caption-title') : null;
@@ -25,18 +24,13 @@
     let autoplayTimer = null;
     let isPaused = false;
 
-    // ensure slides display inline and take 100% width (the CSS should handle this; transform uses %)
-    function updateTrackPosition() {
-      track.style.transform = `translateX(-${current * 100}%)`;
-      updateCaptionAndDots();
-    }
-
     function updateCaptionAndDots() {
       const active = slides[current];
       if (active && active.dataset) {
         if (captionTitle) captionTitle.textContent = active.dataset.title || '';
         if (captionDesc) captionDesc.textContent = active.dataset.desc || '';
       }
+
       if (dotsWrapper) {
         const dots = Array.from(dotsWrapper.children);
         dots.forEach((d, i) => {
@@ -44,12 +38,25 @@
           d.classList.toggle('active', i === current);
         });
       }
-      // update aria-hidden / tabindex for slides (accessibility)
+
       slides.forEach((s, i) => {
         s.setAttribute('aria-hidden', i === current ? 'false' : 'true');
         const focusables = s.querySelectorAll('a, button, input, [tabindex]');
         focusables.forEach(el => el.setAttribute('tabindex', i === current ? '0' : '-1'));
       });
+    }
+
+    function updateTrackPosition() {
+      isTransitioning = true;
+
+      track.style.transform = `translateX(-${current * 100}%)`;
+
+      // wait for CSS transition to finish
+      track.addEventListener('transitionend', () => {
+        isTransitioning = false;
+      }, { once: true });
+
+      updateCaptionAndDots();
     }
 
     function goTo(index) {
@@ -59,10 +66,16 @@
       updateTrackPosition();
     }
 
-    function next() { goTo(current + 1); }
-    function prev() { goTo(current - 1); }
+    function next() {
+      if (isTransitioning) return;
+      goTo(current + 1);
+    }
 
-    // Create dots
+    function prev() {
+      if (isTransitioning) return;
+      goTo(current - 1);
+    }
+
     if (dotsWrapper) {
       dotsWrapper.innerHTML = '';
       slides.forEach((_, i) => {
@@ -80,17 +93,14 @@
       });
     }
 
-    // Hook controls
     if (nextBtn) nextBtn.addEventListener('click', () => { next(); restartAutoplay(); });
     if (prevBtn) prevBtn.addEventListener('click', () => { prev(); restartAutoplay(); });
 
-    // Keyboard navigation on carousel
     carousel.addEventListener('keydown', (ev) => {
       if (ev.key === 'ArrowLeft') { prev(); restartAutoplay(); ev.preventDefault(); }
       if (ev.key === 'ArrowRight') { next(); restartAutoplay(); ev.preventDefault(); }
     });
 
-    // Pause on hover / focus
     [carousel, prevBtn, nextBtn, caption, dotsWrapper].forEach(el => {
       if (!el) return;
       el.addEventListener('mouseenter', () => { isPaused = true; stopAutoplay(); });
@@ -117,7 +127,6 @@
       startAutoplay();
     }
 
-    // make track width flexible (each slide 100%) — relies on CSS but ensure transform works
     track.style.transition = 'transform 400ms ease';
     track.style.display = 'flex';
     slides.forEach(s => {
@@ -125,18 +134,17 @@
       s.style.boxSizing = 'border-box';
     });
 
-    // Init
+    // IMPORTANT: refresh caption immediately when the language changes
+    document.addEventListener('langChanged', updateCaptionAndDots);
+
     updateTrackPosition();
     startAutoplay();
 
-    // Recalculate on resize to ensure smooth behavior (keeps using percent so fine)
     window.addEventListener('resize', () => {
-      // nothing heavy required — transform uses percent
       updateTrackPosition();
     });
   }
 
-  // Initialize all carousels on the page
   document.addEventListener('DOMContentLoaded', () => {
     const carousels = Array.from(document.querySelectorAll('.products-carousel'));
     carousels.forEach(initCarousel);

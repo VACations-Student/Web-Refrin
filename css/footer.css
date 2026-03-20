@@ -212,3 +212,38 @@
         text-align: center;
     }
 }
+
+.cta-contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+}
+
+.cta-contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(0, 0, 0, 0.75);
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 1.2;
+}
+
+.cta-contact-link:hover {
+    text-decoration: underline;
+}
+
+.contact-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 16px;
+    color: inherit;
+}
+
+@media (max-width: 480px) {
+    .cta-contact-list {
+        align-items: center;
+    }
+}
