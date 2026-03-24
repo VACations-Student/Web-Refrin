@@ -186,7 +186,7 @@ window.LANG_EN = {
 
 
     "footer_contact_title": "CONTACT US",
-    "cta_quot": "REQUEST A QUOTE",
+    "cta_quot": "REQUEST A QUOTE →",
     "cta_whatsapp": "WHATSAPP",
     "footer_copyright": "© 2025 Refrin. All rights reserved",
 
