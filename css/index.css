@@ -148,27 +148,25 @@ body {
 
 }
 
-.lang-btn {
+.lang-switcher {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-
-    background: none;
-    border: none;
-    cursor: pointer;
-
-    font-family: inherit;
-    font-size: 14px;
-    color: inherit;
-
-    padding: 6px 10px;
+    gap: 0.35rem;
+    padding: 0.45rem 0.65rem;
+    border-radius: 999px;
 }
 
-.lang-btn:hover {
-    opacity: 0.75;
+.lang-select {
+    border: none;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+    outline: none;
 }
 
 .lang-icon {
+    font-size: 1.2rem;
     display: flex;
     align-items: center;
 }
@@ -180,6 +178,7 @@ body {
 @media (max-width: 768px) {
     .split-title {
         font-size: 16px;
-        padding: 6px 10px; /* optional: reduce padding too */
+        padding: 6px 10px;
+        /* optional: reduce padding too */
     }
 }
